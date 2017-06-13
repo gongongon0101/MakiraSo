@@ -83,6 +83,7 @@
     <Compile Include="Assets\Script\GameController.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\Score.cs" />
+    <Compile Include="Assets\Script\SimpleCCD.cs" />
     <Compile Include="Assets\Script\SpawnPoint.cs" />
     <Compile Include="Assets\Script\Wall.cs" />
   </ItemGroup>
