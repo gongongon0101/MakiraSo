@@ -31,7 +31,7 @@ public class SpawnPoint : MonoBehaviour {
             GameObject wall = Instantiate(spawnObject, transform.position, transform.rotation);
             wall.GetComponent<Wall>().enabled = true;
             // 湧かせるインタバールは2~5
-            yield return new WaitForSeconds(Random.Range(2f, 5f));
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
         }
     }
 }

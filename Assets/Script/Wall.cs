@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour {
 
-    public float scroll = 0.15f;
+    private float scroll = 0.55f;
     private float dropPoint = -80f;
 
     void Update()
