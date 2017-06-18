@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Floor : MonoBehaviour {
 
-    private float scroll = -0.15    f;
+    private float scroll = -0.20f;
     Renderer cRenderer;
 
     void Awake()

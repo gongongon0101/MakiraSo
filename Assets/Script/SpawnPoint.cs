@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour {
 
     public GameObject spawnObject;
-    private float interval = 3f;
 
     void Update()
     {
@@ -30,7 +29,7 @@ public class SpawnPoint : MonoBehaviour {
             // 壁のインスタンスを生成
             GameObject wall = Instantiate(spawnObject, transform.position, transform.rotation);
             wall.GetComponent<Wall>().enabled = true;
-            // 湧かせるインタバールは2~5
+            // 湧かせるインタバール
             yield return new WaitForSeconds(Random.Range(1f, 3f));
         }
     }

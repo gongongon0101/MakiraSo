@@ -17,12 +17,12 @@ TagManager:
   - UI
   - 
   - 
-  - Kokko
+  - 
   - Makira
   - 
-  - 
-  - 
-  - 
+  - wall
+  - Kokko
+  - background
   - 
   - 
   - 
@@ -42,9 +42,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 1787972311
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: body
     uniqueID: 3182028617
+    locked: 0
+  - name: wall
+    uniqueID: 562491423
     locked: 0
