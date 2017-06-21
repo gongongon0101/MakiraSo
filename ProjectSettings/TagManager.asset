@@ -17,9 +17,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - floor
+  - effect
   - Makira
-  - 
   - wall
   - Kokko
   - background
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: wall
     uniqueID: 562491423
+    locked: 0
+  - name: effect
+    uniqueID: 3735614339
     locked: 0

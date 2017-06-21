@@ -1,20 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Player : MonoBehaviour
 {
 
     public float flap = 600f;
+    // ジャンプ中はtrue
+    public bool jumpFlg = true; 
 
     new Rigidbody2D rigidbody2D;
     GameObject gameController;
     GameObject scoreGUI;
+    GameObject dashEffect;
+    GameObject jumpEffect;
 
     void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         gameController = GameObject.Find("GameController");
         scoreGUI = GameObject.Find("ScoreGUI");
+        dashEffect = GameObject.Find("dash_effect");
+        // ダッシュエフェクトを消す
+        dashEffect.SetActive(false);
+        jumpEffect = GameObject.Find("jump_effect");
+        // ダッシュエフェクトを消す
+        jumpEffect.SetActive(false);
     }
 
     void Start()
@@ -47,6 +58,13 @@ public class Player : MonoBehaviour
             rigidbody2D.velocity = Vector2.zero;
             // 上方向へ飛ばす
             rigidbody2D.AddForce(Vector2.up * flap, ForceMode2D.Impulse);
+            // ジャンプフラグを立てる
+            jumpFlg = true;
+            // ダッシュエフェクトを消す
+            dashEffect.SetActive(false);
+            // ジャンプエフェクトを表示
+            DispJumpEffect();
+
         }
     }
 
@@ -76,5 +94,37 @@ public class Player : MonoBehaviour
             // ゲームオーバー
             gameController.SendMessage("GameOver");
         }
+
+        // 床に触れたら
+        if (col.gameObject.tag == "Floor")
+        {
+            // ジャンプフラグを初期化
+            jumpFlg = false;
+            // ダッシュエフェクトを表示
+            dashEffect.SetActive(true);
+        }
+    }
+
+    // ジャンプエフェクトを表示
+    void DispJumpEffect()
+    {
+        // ジャンプエフェクトを出す
+        jumpEffect.SetActive(true);
+
+        // 1秒後にエフェクトを消す
+        StartCoroutine(DelayMethod(0.3f, () =>
+        {
+            // ジャンプエフェクトを消す
+            jumpEffect.SetActive(false);
+        }));
+    }
+
+    // 渡された処理を指定時間後に実行する
+    // waitTime 遅延時間[ミリ秒]
+    // action 実行したい処理
+    private IEnumerator DelayMethod(float waitTime, System.Action action)
+    {
+        yield return new WaitForSeconds(waitTime);
+        action();
     }
 }
