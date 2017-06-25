@@ -92,6 +92,7 @@
     <None Include="Assets\Sprite Pack\Tap and Fly\Readme.txt" />
     <None Include="Assets\Wispy Sky\ReadMe.txt" />
     <None Include="Assets\etc\ロゴの作り方.txt" />
+    <None Include="Assets\font\フォントの使用方法.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     GameObject scoreGUI;
     GameObject dashEffect;
     GameObject jumpEffect;
+    public AudioClip gameOverVoice;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour
         jumpEffect = GameObject.Find("jump_effect");
         // ダッシュエフェクトを消す
         jumpEffect.SetActive(false);
+        // オーディオソースを取得
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Start()
@@ -91,8 +95,14 @@ public class Player : MonoBehaviour
         // デスに触れたら
         if (col.gameObject.tag == "Death")
         {
-            // ゲームオーバー
-            gameController.SendMessage("GameOver");
+            // ゲームプレイ中であればゲームオーバー
+            if (gameController.GetComponent<GameController>().GetIsPlaying()) {
+                // ゲームオーバーボイスを再生
+                audioSource.clip = gameOverVoice;
+                audioSource.Play();
+                // ゲームオーバー
+                gameController.SendMessage("GameOver");
+            }
         }
 
         // 床に触れたら

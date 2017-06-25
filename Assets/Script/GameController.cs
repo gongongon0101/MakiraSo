@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
     private GameObject spawnPoint;
     private GameObject floor;
     public static bool isPlaying;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -19,6 +20,8 @@ public class GameController : MonoBehaviour {
         gameOver = GameObject.Find("GameOver");
         spawnPoint = GameObject.Find("SpawnPoint");
         floor = GameObject.Find("Floor");
+        // オーディオソースを取得
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     void Start()
@@ -38,6 +41,8 @@ public class GameController : MonoBehaviour {
 
     public void GameStart()
     {
+        // ゲームスタートボイス再生
+        audioSource.Play();
         start.SetActive(false);
         isPlaying = true;
         floor.GetComponent<Floor>().enabled = true;
@@ -54,5 +59,11 @@ public class GameController : MonoBehaviour {
             spawnPoint.SendMessage("StopSpawn");
             floor.SendMessage("Stop");
         }
+    }
+
+    // プレイ状態を取得
+    public bool GetIsPlaying()
+    {
+        return isPlaying;
     }
 }
