@@ -86,6 +86,7 @@
     <Compile Include="Assets\Script\Score.cs" />
     <Compile Include="Assets\Script\SimpleCCD.cs" />
     <Compile Include="Assets\Script\SpawnPoint.cs" />
+    <Compile Include="Assets\Script\TweetButton.cs" />
     <Compile Include="Assets\Script\Wall.cs" />
   </ItemGroup>
   <ItemGroup>

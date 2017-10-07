@@ -20,6 +20,12 @@ public class Score : MonoBehaviour {
         score = score + s;
     }
 
+    // スコアを取得
+    public int getScore()
+    {
+        return score;
+    }
+
     // シーン中にフレーム毎に呼ばれる関数
     void Update()
     {
